@@ -20,6 +20,11 @@ jobs:
         with:
           channel: stable
           cache: true
+      - name: Ensure Android platform exists
+        run: |
+          if [ ! -d android ]; then
+            flutter create --platforms=android --project-name nexa_checklist_app .
+          fi
 
       - name: Get dependencies
         run: flutter pub get
